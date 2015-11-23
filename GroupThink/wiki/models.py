@@ -1,8 +1,11 @@
+import datetime
+
 from django.db import models
+from django.utils import timezone
 
 class Page(models.Model):
 	title = models.CharField(max_length=50)
-	created_date = models.DateTimeField('date created')
+	date = models.DateTimeField('date created')
 	
 	def __str__(self):
 		return self.title
@@ -20,10 +23,10 @@ class Text(models.Model):
 class Revision(models.Model):
 	page = models.ForeignKey(Page)
 	text = models.OneToOneField(Text)
-	modified_date = models.DateTimeField('date modified')
+	date = models.DateTimeField('date modified')
 	
 	def __str__(self):
-		return self.modified_date
+		return self.date.strftime('%c')
 		
 	def was_recent_revision(self):
-		return self.modified_date >= timezone.now() - datetime.timedelta(days=1)
+		return self.date >= timezone.now() - datetime.timedelta(days=1)
