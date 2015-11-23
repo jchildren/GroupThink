@@ -22,7 +22,7 @@ class Text(models.Model):
 	
 class Revision(models.Model):
 	page = models.ForeignKey(Page)
-	text = models.OneToOneField(Text)
+	text = models.ForeignKey(Text)
 	date = models.DateTimeField('date modified')
 	
 	def __str__(self):

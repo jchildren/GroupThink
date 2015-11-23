@@ -14,7 +14,8 @@ class TextAdmin(admin.ModelAdmin):
 admin.site.register(Text, TextAdmin)
 
 class RevisionAdmin(admin.ModelAdmin):
-	fields = ['page', 'date']
+	fields = ['page', 'text', 'date']
 	list_display = ('page', 'date', 'was_recent_revision')
+	list_filter = ['date']
 	
 admin.site.register(Revision, RevisionAdmin)
