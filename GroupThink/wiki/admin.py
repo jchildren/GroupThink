@@ -2,20 +2,21 @@ from django.contrib import admin
 
 from .models import Page, Text, Revision
 
-class PageAdmin(admin.ModelAdmin):
-	fields = ['title', 'date']
-	list_display = ('title', 'date')
-
-admin.site.register(Page, PageAdmin)
-
 class TextAdmin(admin.ModelAdmin):
 	fields = ['body']
 
 admin.site.register(Text, TextAdmin)
 
 class RevisionAdmin(admin.ModelAdmin):
-	fields = ['page', 'text', 'date']
-	list_display = ('page', 'date', 'was_recent_revision')
+	fields = ['text', 'date', 'user']
+	list_display = ('date', 'was_recent_revision', 'user')
 	list_filter = ['date']
 	
 admin.site.register(Revision, RevisionAdmin)
+
+class PageAdmin(admin.ModelAdmin):
+	fields = ['title', 'date', 'creator', 'latest', 'revisions']
+	list_display = ('title', 'date', 'creator',  'latest')
+	list_filter = ['date']
+
+admin.site.register(Page, PageAdmin)

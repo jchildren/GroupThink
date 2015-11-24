@@ -1,0 +1,10 @@
+<h1>{{ page.title }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% include "utility/tabs.html" with active="article" %}
+<ul>
+{% for revision in page.revisions.all %}
+    <li>{{ revision.date }} -- {{ revision.user }} -- {{ revision.log }} --
+        <a href="{% url 'wiki:revert' page_id=page.id revision_id=revision.id %}">Revert</a>
+    </li>
+{% endfor %}
+</ul>
