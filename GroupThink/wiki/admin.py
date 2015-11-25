@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Page, Text, Revision
+from .models import Article, Text, Revision
 
 class TextAdmin(admin.ModelAdmin):
 	fields = ['body']
@@ -14,9 +14,9 @@ class RevisionAdmin(admin.ModelAdmin):
 	
 admin.site.register(Revision, RevisionAdmin)
 
-class PageAdmin(admin.ModelAdmin):
-	fields = ['title', 'date', 'creator', 'latest', 'revisions']
+class ArticleAdmin(admin.ModelAdmin):
+	fields = ['title', 'date', 'creator', 'latest', 'revisions', 'path']
 	list_display = ('title', 'date', 'creator',  'latest')
 	list_filter = ['date']
 
-admin.site.register(Page, PageAdmin)
+admin.site.register(Article, ArticleAdmin)

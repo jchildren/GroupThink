@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title>Edit: {{ page.title }}</title>
+<title>Edit: {{ article.title }}</title>
 {% endblock %}
 
 {% block heading %}
-<h1>Edit: {{ page.title }}</h1>
+<h1>Edit: {{ article.title }}</h1>
+{% endblock %}
+
+{% block tabs %}
+{% include "blocks/tabs.html" %}
 {% endblock %}
 
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-    {{ page_form }}
+    {{ article_form }}
     {{ revision_form }}
     {{ text_form }}
     <input type="submit" value="Submit" />

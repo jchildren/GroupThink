@@ -27,12 +27,12 @@ class Revision(models.Model):
 	pass
 	
 
-class Page(models.Model):
+class Article(models.Model):
 	title = models.CharField(max_length=50)
 	date = models.DateTimeField('date created')
 	latest = models.ForeignKey(Revision, related_name='+')
 	creator = models.ForeignKey(User)
-	revisions = models.ManyToManyField(Revision, related_name='Page')
+	revisions = models.ManyToManyField(Revision, related_name='Article')
 	path = models.SlugField(max_length=40)
 	
 	def __str__(self):

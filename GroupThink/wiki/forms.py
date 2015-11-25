@@ -1,11 +1,11 @@
 from django import forms
 from django.forms import ModelForm, Textarea
 
-from .models import Page, Revision, Text
+from .models import Article, Revision, Text
 
-class PageForm(ModelForm):
+class ArticleForm(ModelForm):
 	class Meta:
-		model = Page
+		model = Article
 		fields = ['title']
 		
 class RevisionForm(ModelForm):

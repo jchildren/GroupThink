@@ -21,7 +21,8 @@
     {% block heading %}
     {% endblock %}
     
-    {% include "utility/tabs.html" with active="article" %}
+    {%  block tabs %}
+    {% endblock %}
     
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     
