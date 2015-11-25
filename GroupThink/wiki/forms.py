@@ -17,3 +17,6 @@ class TextForm(ModelForm):
 	class Meta:
 		model = Text
 		fields = ['body']
+		widgets = {
+            'body': Textarea(attrs={'cols': 80, 'rows': 20}),
+        }
