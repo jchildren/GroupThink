@@ -1,6 +1,14 @@
-<h1>{{ page.title }}</h1>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-{% include "utility/tabs.html" with active="article" %}
+{% extends "base.html" %}
+
+{% block title %}
+<title>Revisions: {{ page.title }}</title>
+{% endblock %}
+
+{% block heading %}
+<h1>Revisions: {{ page.title }}</h1>
+{% endblock %}
+
+{% block content %}
 <ul>
 {% for revision in page.revisions.all %}
     <li>{{ revision.date }} -- {{ revision.user }} -- {{ revision.log }} --
@@ -8,3 +16,4 @@
     </li>
 {% endfor %}
 </ul>
+{% endblock %}

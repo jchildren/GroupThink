@@ -1,5 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{ page.title }}</title>
+{% endblock %}
+
+{% block heading %}
 <h1>{{ page.title }}</h1>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-{% include "utility/tabs.html" with active="article" %}
+{% endblock %}
+
+{% block content %}
 <p>{{ page.latest.text.body }}</p>
 <p><strong>{{ page.latest.date }}</strong></p>
+{% endblock %}

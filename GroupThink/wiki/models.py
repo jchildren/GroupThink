@@ -33,6 +33,7 @@ class Page(models.Model):
 	latest = models.ForeignKey(Revision, related_name='+')
 	creator = models.ForeignKey(User)
 	revisions = models.ManyToManyField(Revision, related_name='Page')
+	path = models.SlugField(max_length=40)
 	
 	def __str__(self):
 		return self.title
