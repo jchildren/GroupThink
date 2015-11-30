@@ -35,7 +35,7 @@ def EditView(request, article_id):
         text_form = TextForm(request.POST)
         
         # check whether it's valid:
-        if article_form.is_valid() and revision_form.is_valid() and text_form.is_valid():
+        if revision_form.is_valid() and text_form.is_valid():
         
             # Creates a new text object with the form input
             text = Text(body=text_form.cleaned_data['body'])
@@ -48,8 +48,6 @@ def EditView(request, article_id):
             revision = Revision(text=text, date=timezone.now(), log=revision_form.cleaned_data['log'], user=user)
             revision.save()
         
-            # Updates this revision to the latest
-            article.title = article_form.cleaned_data['title']
             article.latest = revision
             article.revisions.add(revision)
             article.save()
